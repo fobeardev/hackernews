@@ -16,6 +16,10 @@ namespace hackernews.Controllers
         private const string NewPostsUri = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty";
         private const string ItemUri = "https://hacker-news.firebaseio.com/v0/item/";
 
+        /// <summary>
+        /// Naive implementation to get ALL approx 500 recent stories
+        /// </summary>
+        /// <returns>Recent Stories from Hacker News</returns>
         [HttpGet]
         public async IAsyncEnumerable<Story> Get()
         {
@@ -36,10 +40,15 @@ namespace hackernews.Controllers
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 };
 
-                yield return await JsonSerializer.DeserializeAsync<Story>(
+                var story = await JsonSerializer.DeserializeAsync<Story>(
                     await storyItem.Content.ReadAsStreamAsync(), options);
-            }
 
+                // Items can be null, even though they were in the recent list
+                if (story != null)
+                {
+                    yield return story;
+                }
+            }
         }
     }
 }
