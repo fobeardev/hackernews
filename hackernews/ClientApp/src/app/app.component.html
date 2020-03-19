@@ -1,10 +1,22 @@
 <div class="virtual-scroll-container">
   <cdk-virtual-scroll-viewport itemSize="50" class="virtual-scroll">
-    <mat-list role="list">
-      <mat-list-item *cdkVirtualFor="let story of stories" role="listitem">
-        <div class="story-title" mat-line><a href="{{story ? story.url : '#'}}">{{story ? story.title : 'Loading...'}}</a></div>
-        <div class="story-author" mat-line>{{story ? story.by : ''}} - {{ story ? story.score + ' points' : '' }} - {{ story ? story.descendants + ' comments' : '' }}</div>
-      </mat-list-item>
-    </mat-list>
+    <div class="news-container">
+      <mat-toolbar color="primary">
+        <a routerLink='/' class="toolbar-title">Hacker News</a>
+      </mat-toolbar>
+      <mat-list role="list">
+        <mat-list-item *cdkVirtualFor="let story of stories" role="listitem">
+          <div class="story-title" mat-line>
+            <!-- Could also use an ng-template to if else this situation -->
+            <div *ngIf="!story">Loading...</div>
+            <a *ngIf="story && story.hasOwnProperty('url')" href="{{story.url}}">{{story.title}}</a>
+            <div *ngIf="story && !story.hasOwnProperty('url')">{{story.title}}</div>
+          </div>
+          <div class="story-author" mat-line>
+            {{story ? story.by : ''}}{{ story ? ' - ' + story.score + ' points' : '' }}{{ story ? ' - ' + story.descendants + ' comments' : '' }}
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
   </cdk-virtual-scroll-viewport>
 </div>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HackerNews.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace hackernews
+namespace HackerNews
 {
     public class Startup
     {
@@ -32,6 +33,8 @@ namespace hackernews
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<IHackerNewsService, HackerNewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

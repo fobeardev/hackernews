@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const modules = [
   ScrollingModule,
-  MatListModule
+  MatListModule,
+  MatToolbarModule
 ];
 
 @NgModule({
