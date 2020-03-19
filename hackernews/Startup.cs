@@ -77,6 +77,8 @@ namespace hackernews
                     // is expecting the "listening on host" message from angular.
                     // See more here https://github.com/angular/angular-cli/issues/16961
                     spa.UseAngularCliServer(npmScript: "start");
+
+                    //spa.UseProxyToSpaDevelopmentServer("https://localhost:4200");
                 }
             });
         }

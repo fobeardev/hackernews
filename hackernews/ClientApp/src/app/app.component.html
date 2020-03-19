@@ -2,7 +2,7 @@
   <cdk-virtual-scroll-viewport itemSize="50" class="virtual-scroll">
     <mat-list role="list">
       <mat-list-item *cdkVirtualFor="let story of stories" role="listitem">
-        <div class="story-title" mat-line>{{story ? story.title : 'Loading...'}}</div>
+        <div class="story-title" mat-line><a href="{{story ? story.url : '#'}}">{{story ? story.title : 'Loading...'}}</a></div>
         <div class="story-author" mat-line>{{story ? story.by : ''}} - {{ story ? story.score + ' points' : '' }} - {{ story ? story.descendants + ' comments' : '' }}</div>
       </mat-list-item>
     </mat-list>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Story } from './story';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class HackerNewsService {
   /**
    * getStories - Retrieve ALL stories from hacker news api
    */
-  public getStories() : Observable<object> {
-    return this.http.get('/api/hackernews');
+  public getStories() : Observable<Array<Story>> {
+    return this.http.get<Array<Story>>('/api/hackernews');
+  }
+
+  public getRecentStories(pageNumber: number, pageSize?: number) : Observable<Array<Story>> {
+    return this.http.get<Array<Story>>(`/api/hackernews/recent/${pageNumber}${pageSize && '/' + pageSize}`);
   }
 }
