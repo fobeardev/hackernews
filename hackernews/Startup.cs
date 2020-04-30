@@ -66,24 +66,14 @@ namespace HackerNews
                 endpoints.MapControllers();
             });
 
-            app.UseSpa(spa =>
+            if (!env.IsDevelopment())
             {
-                // https://go.microsoft.com/fwlink/?linkid=864501
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
+                app.UseSpa(spa =>
                 {
-                    // HACK:
-                    // In ClientApp/package.json the start script has the option -host: 0.0.0.0.
-                    // There appears to be a bug when using this middleware with Angular 9.
-                    // Using the invalid metahost seems to trick it when the middleware
-                    // is expecting the "listening on host" message from angular.
-                    // See more here https://github.com/angular/angular-cli/issues/16961
-                    spa.UseAngularCliServer(npmScript: "start");
-
-                    //spa.UseProxyToSpaDevelopmentServer("https://localhost:4200");
-                }
-            });
+                    // https://go.microsoft.com/fwlink/?linkid=864501
+                    spa.Options.SourcePath = "ClientApp";
+                });
+            }
         }
     }
 }
