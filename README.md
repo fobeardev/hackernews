@@ -15,6 +15,14 @@ I removed `Microsoft.AspNetCore.SpaServices` from development process due to a b
     - cd to `/ClientApp` folder 
     - run `npm start`
 
+Note: 
+
+The ClientApp has a file `src/proxy.conf.json` which is used in `angular.json` for when `ng serve` (development is used)
+
+This should proxy requests made from http://localhost:4200/api to https://localhost:44374/api
+
+If you are getting 500 errors, it is most likely this
+
 ## Future Opportunities for Improvement
 
 - Host on Azure
