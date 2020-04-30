@@ -3,16 +3,17 @@ This is a technical assessment utilizing the hacker news api. It is an Asp.Net C
 
 ## Running
 
-To utilize Angular during development I added the `Microsoft.AspNetCore.SpaServices` NuGet package that includes AngularCli middleware. There seems to be a bug with this MiddleWare and Angular 9 (latest). Since I generated a 9 project I had to trick it because it appears to be looking for a specific message from angular that might have changed from 8 (the listening on host... message). I hate to reference random links for issues but here is where the information is coming from: https://github.com/angular/angular-cli/issues/16961.
+I removed `Microsoft.AspNetCore.SpaServices` from development process due to a bug with its handling of Angular 9
 
-### Option 1: run from Visual Studio
-
-Load the solution and press F5
-
-### Option 2: run from command line / terminal
-
-- Make sure to install https://docs.microsoft.com/en-us/dotnet/core/sdk
-- run `dotnet run`
+- Run the backend: 
+    1. Visual Studio
+        - Load the solution and press F5
+    2. DotNet CLI
+        - Make sure to install https://docs.microsoft.com/en-us/dotnet/core/sdk
+        - Run the backend: `dotnet run`
+- Run the frontend: 
+    - cd to `/ClientApp` folder 
+    - run `npm start`
 
 ## Future Opportunities for Improvement
 
