@@ -1,5 +1,5 @@
 # HackerNews
-This is a technical assessment utilizing the hacker news api. It is an Asp.Net Core app with an Angular front end. The Angular portion uses Angular CDK / Material to present a virtual scrolling list. The virtual scrolling isn't perfect, for example the recent items change often. This means if a call is made to fetch the first 30 results, the next 30 might not be the same 31-60 items from the first call. To fix that I could implement some caching in the future - and possibly a hard refresh button.
+This is example code utilizing the hacker news api. It is an Asp.Net Core app with an Angular front end. The Angular portion uses Angular CDK / Material to present a virtual scrolling list. The virtual scrolling isn't perfect, for example the recent items change often. This means if a call is made to fetch the first 30 results, the next 30 might not be the same 31-60 items from the first call. To fix that I could implement some caching in the future - and possibly a hard refresh button.
 
 ## Running
 
